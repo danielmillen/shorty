@@ -1,19 +1,22 @@
 "use client";
-import { FormEvent, useState } from "react";
+import { FormEvent, useState, useCallback } from "react";
 
 export default function Home() {
     const [url, setUrl] = useState("");
     const [shortUrl, setShortUrl] = useState("");
-    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        const newUrl = "Short url";
-        setShortUrl(newUrl);
-    };
+    const handleSubmit = useCallback(
+        (e: FormEvent<HTMLFormElement>) => {
+            e.preventDefault();
+            const newUrl = "Short url";
+            setShortUrl(newUrl);
+        },
+        [setShortUrl]
+    );
 
     return (
         <main>
             <h1>Shorty Url</h1>
-            <form onSubmit={(e) => handleSubmit(e)}>
+            <form onSubmit={handleSubmit}>
                 <input
                     onChange={(e) => setUrl(e.target.value)}
                     value={url}
