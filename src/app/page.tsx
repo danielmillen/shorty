@@ -13,7 +13,7 @@ export default function Home() {
     return (
         <main>
             <h1>Shorty Url</h1>
-            <form onSubmit={(e) => handleSubmit(e)}>
+            <form onSubmit={handleSubmit}>
                 <input
                     onChange={(e) => setUrl(e.target.value)}
                     value={url}
